@@ -1,0 +1,30 @@
+<div class="column-layout group">
+  <igx-list *ngFor="let item of northwindEmployees" class="list">
+    <igx-list-item [isHeader]="false">
+      <span igxListThumbnail>
+        <igx-avatar [src]="item.avatarUrl" [roundShape]="true"></igx-avatar>
+      </span>
+      <span igxListLineTitle>{{ item.lastName }}</span>
+      <span igxListLineSubTitle>{{ item.firstName }}</span>
+    </igx-list-item>
+  </igx-list>
+</div>
+<div class="column-layout group_1">
+  <div class="column-layout group_2">
+    <igx-grid [data]="northwindCustomers" primaryKey="customerID" displayDensity="cosy" [allowFiltering]="true" filterMode="excelStyleFilter" class="grid">
+      <igx-column header="customerID" field="customerID" dataType="string" [sortable]="true" title="customerID"></igx-column>
+      <igx-column header="companyName" field="companyName" dataType="string" [sortable]="true" title="companyName"></igx-column>
+      <igx-column header="contactName" field="contactName" dataType="string" [sortable]="true" title="contactName"></igx-column>
+      <igx-column header="contactTitle" field="contactTitle" dataType="string" [sortable]="true" title="contactTitle"></igx-column>
+      <igx-column header="street" field="address.street" dataType="string" [sortable]="true" title="address.street"></igx-column>
+      <igx-column header="city" field="address.city" dataType="string" [sortable]="true" title="address.city"></igx-column>
+      <igx-column header="region" field="address.region" dataType="string" [sortable]="true" title="address.region"></igx-column>
+      <igx-column header="postalCode" field="address.postalCode" dataType="string" [sortable]="true" title="address.postalCode"></igx-column>
+      <igx-column header="country" field="address.country" dataType="string" [sortable]="true" title="address.country"></igx-column>
+      <igx-column header="phone" field="address.phone" dataType="string" [sortable]="true" title="address.phone"></igx-column>
+    </igx-grid>
+  </div>
+  <div class="column-layout group_3">
+    <igx-category-chart [dataSource]="northwindOrders" chartType="column" [xAxisLabelAngle]="60" chartTitle="Freight by Customer" includedProperties="customerID,freight" computedPlotAreaMarginMode="series" class="category-chart"></igx-category-chart>
+  </div>
+</div>
